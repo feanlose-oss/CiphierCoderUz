@@ -6,14 +6,18 @@
 
 <title>CiphierCoderUz | Developer</title>
 
-<meta name="description"
-content="CiphierCoderUz — web saytlar, ilovalar, botlar va maxsus dasturiy loyihalar yaratadi.">
-
 <style>
-
-/* =========================
-   RESET
-========================= */
+:root{
+    --bg:#030706;
+    --bg2:#07120f;
+    --card:#0a1714;
+    --line:#12342c;
+    --green:#00ff9c;
+    --green2:#00c878;
+    --cyan:#00d9ff;
+    --text:#f4fffb;
+    --muted:#91aaa3;
+}
 
 *{
     margin:0;
@@ -22,123 +26,33 @@ content="CiphierCoderUz — web saytlar, ilovalar, botlar va maxsus dasturiy loy
     scroll-behavior:smooth;
 }
 
-:root{
-    --bg:#020706;
-    --bg2:#06100d;
-    --panel:#091512;
-    --panel2:#0c1b17;
-
-    --green:#00ff9d;
-    --green2:#00d982;
-
-    --text:#f1fff9;
-    --muted:#91aaa2;
-
-    --border:rgba(0,255,157,.16);
-
-    --shadow:
-        0 0 30px rgba(0,255,157,.08);
-}
-
 body{
+    font-family:Arial, sans-serif;
     background:
         radial-gradient(
-            circle at 50% -10%,
-            rgba(0,255,157,.12),
-            transparent 35%
+            circle at 80% 10%,
+            rgba(0,255,156,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 40%,
+            rgba(0,217,255,.07),
+            transparent 25%
         ),
         var(--bg);
 
     color:var(--text);
-
-    font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
     min-height:100vh;
-
     overflow-x:hidden;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before{
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    opacity:.18;
-
-    background-image:
-        linear-gradient(
-            rgba(0,255,157,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0,255,157,.035) 1px,
-            transparent 1px
-        );
-
-    background-size:40px 40px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 80%
-        );
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
-.glow{
-    position:fixed;
-
-    width:350px;
-    height:350px;
-
-    border-radius:50%;
-
-    background:rgba(0,255,157,.08);
-
-    filter:blur(100px);
-
-    pointer-events:none;
-
-    z-index:-1;
-
-    animation:moveGlow 10s infinite alternate ease-in-out;
-}
-
-.glow.one{
-    top:10%;
-    left:-150px;
-}
-
-.glow.two{
-    bottom:5%;
-    right:-150px;
-
-    animation-delay:3s;
-}
-
-@keyframes moveGlow{
-    from{
-        transform:translate(0,0);
-    }
-
-    to{
-        transform:translate(80px,50px);
-    }
+button{
+    font:inherit;
 }
 
 /* =========================
@@ -147,206 +61,137 @@ body::before{
 
 header{
     position:fixed;
-
     top:0;
     left:0;
     right:0;
 
-    height:76px;
-
     z-index:1000;
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:0 7%;
-
-    background:
-        rgba(2,7,6,.72);
-
+    background:rgba(3,7,6,.82);
     backdrop-filter:blur(18px);
 
     border-bottom:
         1px solid
-        rgba(0,255,157,.08);
+        rgba(0,255,156,.1);
+}
+
+.nav{
+    max-width:1180px;
+    height:72px;
+
+    margin:auto;
+    padding:0 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
     font-size:22px;
-
-    font-weight:800;
-
-    letter-spacing:-1px;
-
-    color:white;
+    font-weight:900;
 }
 
 .logo span{
     color:var(--green);
 
     text-shadow:
-        0 0 15px rgba(0,255,157,.55);
+        0 0 18px
+        rgba(0,255,156,.7);
 }
 
-/* =========================
-   MENU BUTTON
-========================= */
+/* DESKTOP MENU */
 
-.menu-btn{
-    width:46px;
-    height:46px;
-
-    border:1px solid var(--border);
-
-    background:rgba(0,255,157,.04);
-
-    color:white;
-
-    border-radius:12px;
-
-    font-size:25px;
-
-    cursor:pointer;
-
+.navlinks{
     display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    transition:.3s;
+    gap:26px;
 }
 
-.menu-btn:hover{
-    color:var(--green);
-
-    border-color:var(--green);
-
-    box-shadow:
-        0 0 20px rgba(0,255,157,.2);
-}
-
-/* =========================
-   SIDE MENU
-========================= */
-
-.side-menu{
-    position:fixed;
-
-    top:0;
-    right:-340px;
-
-    width:320px;
-
-    height:100vh;
-
-    z-index:2000;
-
-    padding:100px 25px 30px;
-
-    background:
-        rgba(3,10,8,.97);
-
-    backdrop-filter:blur(25px);
-
-    border-left:
-        1px solid
-        var(--border);
-
-    box-shadow:
-        -20px 0 60px
-        rgba(0,0,0,.5);
-
-    transition:.45s cubic-bezier(.77,0,.18,1);
-}
-
-.side-menu.active{
-    right:0;
-}
-
-.close-menu{
-    position:absolute;
-
-    top:25px;
-    right:25px;
-
-    background:none;
-
-    border:none;
-
-    color:white;
-
-    font-size:28px;
-
-    cursor:pointer;
-}
-
-.menu-title{
-    color:var(--green);
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    margin-bottom:25px;
-}
-
-.menu-link{
-    display:flex;
-
-    align-items:center;
-
-    gap:13px;
-
-    padding:15px;
-
-    margin:7px 0;
-
-    color:#c9d8d3;
-
-    text-decoration:none;
-
-    border-radius:12px;
-
-    border:1px solid transparent;
+.navlinks a{
+    color:#b9cec8;
+    font-size:14px;
 
     transition:.25s;
 }
 
-.menu-link:hover{
+.navlinks a:hover{
     color:var(--green);
-
-    background:
-        rgba(0,255,157,.06);
-
-    border-color:var(--border);
-
-    transform:translateX(5px);
 }
 
-.overlay{
-    position:fixed;
+/* MOBILE BUTTON */
 
-    inset:0;
+.menu{
+    display:none;
 
-    background:rgba(0,0,0,.6);
+    background:none;
 
-    z-index:1500;
+    border:1px solid var(--line);
 
-    opacity:0;
+    color:white;
 
-    pointer-events:none;
+    border-radius:12px;
 
-    transition:.3s;
+    padding:8px 12px;
+
+    font-size:24px;
+
+    cursor:pointer;
 }
 
-.overlay.active{
-    opacity:1;
+/* MOBILE MENU */
 
-    pointer-events:auto;
+.mobile{
+    display:none;
+
+    position:absolute;
+
+    top:72px;
+    left:12px;
+    right:12px;
+
+    background:#07110f;
+
+    border:1px solid var(--line);
+
+    border-radius:18px;
+
+    padding:10px;
+
+    box-shadow:
+        0 20px 60px #000;
+}
+
+.mobile.open{
+    display:block;
+}
+
+.mobile a{
+    display:block;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    color:#d9e9e5;
+}
+
+.mobile a:hover{
+    background:#0d211c;
+    color:var(--green);
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section{
+    max-width:1180px;
+
+    margin:auto;
+
+    padding:
+        105px 20px
+        50px;
 }
 
 /* =========================
@@ -356,360 +201,432 @@ header{
 .hero{
     min-height:100vh;
 
-    padding:
-        150px 7%
-        70px;
+    display:grid;
 
-    display:flex;
+    grid-template-columns:
+        1.15fr .85fr;
 
-    flex-direction:column;
+    gap:50px;
 
-    justify-content:center;
+    align-items:center;
 
-    position:relative;
+    padding-top:130px;
 }
 
 .badge{
-    width:max-content;
-
-    padding:9px 16px;
-
-    border-radius:30px;
-
-    color:var(--green);
-
-    font-size:12px;
-
-    letter-spacing:1.5px;
-
-    border:1px solid var(--border);
-
-    background:
-        rgba(0,255,157,.04);
-
-    margin-bottom:25px;
-
-    animation:fadeUp .8s ease both;
-}
-
-.hero h1{
-    max-width:850px;
-
-    font-size:
-        clamp(48px,8vw,92px);
-
-    line-height:.98;
-
-    letter-spacing:-4px;
-
-    animation:fadeUp .9s .1s ease both;
-}
-
-.hero h1 span{
-    background:
-        linear-gradient(
-            90deg,
-            #00ff9d,
-            #00d9ff,
-            #8b7cff
-        );
-
-    -webkit-background-clip:text;
-
-    color:transparent;
-
-    background-size:200% auto;
-
-    animation:gradientMove 4s linear infinite;
-}
-
-.hero p{
-    max-width:700px;
-
-    margin-top:30px;
-
-    color:var(--muted);
-
-    font-size:18px;
-
-    line-height:1.8;
-
-    animation:fadeUp .9s .2s ease both;
-}
-
-.buttons{
-    display:flex;
-
-    gap:14px;
-
-    margin-top:32px;
-
-    flex-wrap:wrap;
-
-    animation:fadeUp .9s .3s ease both;
-}
-
-.btn{
-    padding:16px 23px;
-
-    border-radius:13px;
-
-    text-decoration:none;
-
-    font-weight:700;
-
-    transition:.3s;
-
-    cursor:pointer;
-
-    border:1px solid var(--border);
-
-    background:rgba(255,255,255,.02);
-
-    color:white;
-}
-
-.btn.primary{
-    color:#00140d;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00ff9d,
-            #00d982
-        );
-
-    box-shadow:
-        0 0 25px
-        rgba(0,255,157,.22);
-}
-
-.btn:hover{
-    transform:translateY(-4px);
-
-    box-shadow:
-        0 10px 30px
-        rgba(0,255,157,.12);
-}
-
-/* =========================
-   TERMINAL
-========================= */
-
-.terminal{
-    width:100%;
-
-    max-width:720px;
-
-    margin-top:55px;
-
-    background:#030807;
-
-    border:1px solid var(--border);
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 0 50px
-        rgba(0,255,157,.08);
-
-    animation:
-        fadeUp 1s .45s ease both,
-        floatTerminal 5s ease-in-out infinite;
-}
-
-.terminal-head{
-    height:48px;
-
-    display:flex;
+    display:inline-flex;
 
     align-items:center;
 
     gap:8px;
 
-    padding:0 16px;
+    padding:10px 15px;
 
-    background:#07100d;
-
-    border-bottom:
+    border:
         1px solid
-        rgba(255,255,255,.05);
+        rgba(0,255,156,.25);
+
+    border-radius:999px;
+
+    color:var(--green);
+
+    background:
+        rgba(0,255,156,.05);
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
 }
 
-.dot{
-    width:10px;
-    height:10px;
+.badge i{
+    width:8px;
+    height:8px;
 
     border-radius:50%;
 
-    background:#33433e;
+    background:var(--green);
+
+    box-shadow:
+        0 0 14px
+        var(--green);
 }
 
-.terminal-name{
-    margin-left:10px;
+h1{
+    font-size:
+        clamp(44px,7vw,78px);
 
-    color:#71847d;
+    line-height:.98;
 
-    font-size:12px;
+    letter-spacing:-4px;
 
-    font-family:monospace;
+    margin:24px 0;
 }
 
-.terminal-body{
-    padding:23px;
+.gradient{
+    background:
+        linear-gradient(
+            90deg,
+            var(--green),
+            #00d9ff,
+            #8c6cff
+        );
 
-    font-family:
-        "Courier New",
-        monospace;
+    -webkit-background-clip:text;
 
-    color:#a9bbb5;
-
-    line-height:2;
-
-    font-size:14px;
+    color:transparent;
 }
 
-.green{
+.lead{
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:var(--muted);
+
+    max-width:650px;
+}
+
+.actions{
+    display:flex;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+}
+
+.btn{
+    border:
+        1px solid
+        var(--line);
+
+    padding:15px 22px;
+
+    border-radius:14px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+}
+
+.primary{
+    background:var(--green);
+
+    color:#00150d;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,255,156,.18);
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 35px
+        rgba(0,255,156,.4);
+}
+
+.secondary{
+    background:#0a1513;
+
+    color:white;
+}
+
+.secondary:hover{
+    border-color:var(--green);
+
     color:var(--green);
-
-    text-shadow:
-        0 0 10px
-        rgba(0,255,157,.5);
-}
-
-.check{
-    color:var(--green);
-
-    margin-left:8px;
-}
-
-.cursor{
-    color:var(--green);
-
-    animation:blink .8s infinite;
-}
-
-@keyframes blink{
-    50%{
-        opacity:0;
-    }
-}
-
-@keyframes floatTerminal{
-    50%{
-        transform:translateY(-7px);
-    }
 }
 
 /* =========================
-   SECTIONS
+   HERO CARD
 ========================= */
 
-section{
-    padding:110px 7%;
+.heroCard{
+    position:relative;
+
+    min-height:390px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c1d18,
+            #05100d
+        );
+
+    padding:28px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.45);
 }
 
-.section-label{
+.glow{
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    filter:blur(90px);
+
+    opacity:.15;
+
+    right:-50px;
+    top:-50px;
+}
+
+.codebox{
+    margin-top:35px;
+
+    border:
+        1px solid
+        #173b32;
+
+    border-radius:18px;
+
+    background:#030806;
+
+    padding:22px;
+
+    font-family:monospace;
+
+    color:#9dbab1;
+
+    line-height:1.8;
+}
+
+.codebox .g{
     color:var(--green);
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    margin-bottom:15px;
 }
 
-.section-title{
-    font-size:
-        clamp(32px,5vw,55px);
+.codebox .c{
+    color:#647f76;
+}
 
-    margin-bottom:45px;
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-top:18px;
+}
+
+.stat{
+    padding:18px;
+
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:16px;
+
+    background:#07110f;
+}
+
+.stat b{
+    display:block;
+
+    font-size:24px;
+
+    color:var(--green);
+}
+
+.stat small{
+    color:var(--muted);
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.title{
+    text-align:center;
+
+    margin-bottom:38px;
+}
+
+.title h2{
+    font-size:42px;
 
     letter-spacing:-2px;
 }
 
+.title p{
+    color:var(--muted);
+
+    margin-top:10px;
+}
+
 /* =========================
-   SERVICES
+   GRID
 ========================= */
 
-.services-grid{
+.grid{
     display:grid;
 
     grid-template-columns:
         repeat(4,1fr);
 
-    gap:18px;
+    gap:16px;
 }
 
-.card{
-    padding:27px;
+/* =========================
+   CARDS
+========================= */
 
+.card{
     background:
         linear-gradient(
             145deg,
-            rgba(0,255,157,.05),
-            rgba(255,255,255,.015)
+            #0b1915,
+            #07100e
         );
 
-    border:1px solid var(--border);
+    border:
+        1px solid
+        var(--line);
 
-    border-radius:18px;
+    border-radius:20px;
 
-    transition:.35s;
+    padding:24px;
+
+    transition:.3s;
 
     position:relative;
 
     overflow:hidden;
 }
 
-.card::before{
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    top:-50px;
-    right:-50px;
-
-    background:var(--green);
-
-    filter:blur(60px);
-
-    opacity:.08;
-}
-
 .card:hover{
     transform:
-        translateY(-8px);
+        translateY(-7px);
 
     border-color:
-        rgba(0,255,157,.4);
+        rgba(0,255,156,.45);
 
     box-shadow:
-        0 15px 40px
-        rgba(0,255,157,.08);
+        0 20px 50px
+        rgba(0,255,156,.08);
 }
 
-.card-icon{
+.card .icon{
     font-size:30px;
-
-    margin-bottom:18px;
 }
 
 .card h3{
-    margin-bottom:10px;
+    margin:
+        15px 0
+        8px;
 }
 
 .card p{
     color:var(--muted);
 
-    line-height:1.7;
+    line-height:1.65;
 
     font-size:14px;
+}
+
+/* =========================
+   PRICES
+========================= */
+
+.price{
+    font-size:30px;
+
+    font-weight:900;
+
+    color:var(--green);
+
+    margin:
+        17px 0
+        4px;
+}
+
+.price small{
+    font-size:13px;
+
+    color:var(--muted);
+}
+
+.card ul{
+    list-style:none;
+
+    margin:17px 0;
+
+    color:#b5c9c3;
+
+    font-size:13px;
+
+    line-height:2;
+}
+
+.card li::before{
+    content:"✓";
+
+    color:var(--green);
+
+    margin-right:8px;
+}
+
+.featured{
+    border-color:
+        rgba(0,255,156,.5);
+
+    box-shadow:
+        0 0 30px
+        rgba(0,255,156,.06);
+}
+
+.tag{
+    position:absolute;
+
+    right:15px;
+    top:15px;
+
+    font-size:10px;
+
+    background:
+        rgba(0,255,156,.12);
+
+    color:var(--green);
+
+    padding:6px 9px;
+
+    border-radius:99px;
 }
 
 /* =========================
@@ -722,38 +639,40 @@ section{
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:20px;
+    gap:18px;
 }
 
 .project{
-    min-height:230px;
+    height:240px;
 
-    padding:25px;
+    border:
+        1px solid
+        var(--line);
 
-    border-radius:18px;
+    border-radius:22px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #0b1814,
-            #040908
-        );
-
-    border:1px solid var(--border);
+    padding:24px;
 
     display:flex;
 
     flex-direction:column;
 
-    justify-content:flex-end;
+    justify-content:end;
 
-    transition:.35s;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,255,156,.12),
+            transparent 50%
+        ),
+        #09130f;
+
+    transition:.3s;
 }
 
 .project:hover{
     transform:
-        translateY(-8px)
-        scale(1.01);
+        scale(1.02);
 
     border-color:var(--green);
 }
@@ -762,90 +681,105 @@ section{
     color:var(--green);
 
     font-size:12px;
-
-    margin-bottom:10px;
 }
 
 .project h3{
-    font-size:23px;
+    font-size:22px;
+
+    margin-top:8px;
+}
+
+.project p{
+    color:var(--muted);
+
+    margin-top:6px;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    grid-template-columns:
+        repeat(3,1fr);
 }
 
 /* =========================
    ABOUT
 ========================= */
 
-.about-box{
+.about{
     max-width:850px;
 
-    padding:35px;
+    margin:auto;
 
-    border:1px solid var(--border);
-
-    background:
-        rgba(0,255,157,.025);
-
-    border-radius:20px;
-
-    color:#a9bbb5;
-
-    line-height:1.9;
+    text-align:center;
 }
 
 /* =========================
    ORDER
 ========================= */
 
-.order-box{
-    max-width:800px;
-
-    padding:35px;
-
-    border-radius:20px;
-
-    border:1px solid var(--border);
-
-    background:
-        rgba(0,255,157,.025);
-}
-
-.form-grid{
+.order{
     display:grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap:15px;
+    gap:25px;
+
+    align-items:start;
+}
+
+.form{
+    border:
+        1px solid
+        var(--line);
+
+    border-radius:24px;
+
+    padding:25px;
+
+    background:#07110f;
+}
+
+label{
+    display:block;
+
+    color:#9fb7b0;
+
+    font-size:13px;
+
+    margin:
+        0 0
+        7px;
 }
 
 input,
-textarea,
-select{
+select,
+textarea{
     width:100%;
 
-    padding:15px;
+    margin-bottom:17px;
 
-    border-radius:12px;
+    background:#030806;
 
-    border:1px solid var(--border);
-
-    background:#050c0a;
+    border:
+        1px solid
+        #173a31;
 
     color:white;
 
+    padding:14px;
+
+    border-radius:12px;
+
     outline:none;
-
-    font:inherit;
-}
-
-textarea{
-    min-height:130px;
-
-    resize:vertical;
 }
 
 input:focus,
-textarea:focus,
-select:focus{
+select:focus,
+textarea:focus{
     border-color:var(--green);
 
     box-shadow:
@@ -853,44 +787,40 @@ select:focus{
         rgba(0,255,157,.08);
 }
 
-.full{
-    grid-column:1/-1;
+textarea{
+    min-height:120px;
+
+    resize:vertical;
 }
 
-/* =========================
-   ADMIN
-========================= */
-
-.admin{
-    display:none;
+.info{
+    padding:25px;
 }
 
-.admin.active{
-    display:block;
+.info h3{
+    font-size:30px;
+
+    margin-bottom:14px;
 }
 
-.admin-box{
-    max-width:700px;
+.info p{
+    color:var(--muted);
 
-    padding:30px;
-
-    border-radius:18px;
-
-    border:1px solid var(--border);
-
-    background:#06100d;
+    line-height:1.8;
 }
 
-.admin-stat{
-    display:flex;
+.contactBox{
+    margin-top:20px;
 
-    justify-content:space-between;
+    padding:18px;
 
-    padding:18px 0;
-
-    border-bottom:
+    border:
         1px solid
-        rgba(255,255,255,.05);
+        var(--line);
+
+    border-radius:15px;
+
+    background:#07110f;
 }
 
 /* =========================
@@ -898,15 +828,15 @@ select:focus{
 ========================= */
 
 footer{
-    padding:40px 7%;
-
     border-top:
         1px solid
-        rgba(0,255,157,.08);
+        var(--line);
 
-    color:#60736c;
+    padding:30px 20px;
 
     text-align:center;
+
+    color:#718981;
 
     font-size:13px;
 }
@@ -918,114 +848,157 @@ footer{
 .reveal{
     opacity:0;
 
-    transform:translateY(30px);
+    transform:
+        translateY(25px);
 
     transition:
-        opacity .7s,
-        transform .7s;
+        .7s;
 }
 
 .reveal.show{
     opacity:1;
 
-    transform:translateY(0);
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-
-        transform:translateY(25px);
-    }
-
-    to{
-        opacity:1;
-
-        transform:translateY(0);
-    }
-}
-
-@keyframes gradientMove{
-    to{
-        background-position:
-            200% center;
-    }
+    transform:none;
 }
 
 /* =========================
-   RESPONSIVE
+   TOAST
 ========================= */
 
-@media(max-width:900px){
+#toast{
+    position:fixed;
 
-    .services-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+    right:18px;
+    bottom:18px;
 
-    .portfolio{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+    background:#0b1c17;
+
+    border:
+        1px solid
+        var(--green);
+
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    transform:
+        translateY(120px);
+
+    transition:.3s;
+
+    z-index:300;
 }
 
-@media(max-width:600px){
+#toast.show{
+    transform:none;
+}
 
-    header{
-        padding:0 20px;
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    .navlinks{
+        display:none;
+    }
+
+    .menu{
+        display:block;
     }
 
     .hero{
-        padding:
-            125px 20px 60px;
+        grid-template-columns:1fr;
+
+        padding-top:115px;
     }
 
-    section{
-        padding:
-            80px 20px;
+    .heroCard{
+        min-height:330px;
     }
 
-    .hero h1{
-        font-size:52px;
-
-        letter-spacing:-3px;
+    .grid{
+        grid-template-columns:
+            1fr 1fr;
     }
 
-    .hero p{
-        font-size:15px;
-    }
-
-    .terminal{
-        margin-top:40px;
-    }
-
-    .terminal-body{
-        font-size:11px;
-
-        padding:17px;
-    }
-
-    .services-grid,
     .portfolio{
-        grid-template-columns:1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
-    .form-grid{
-        grid-template-columns:1fr;
+    .services{
+        grid-template-columns:
+            1fr 1fr;
     }
 
-    .side-menu{
-        width:290px;
+    .order{
+        grid-template-columns:1fr;
     }
 }
 
+@media(max-width:520px){
+
+    section{
+        padding-left:16px;
+        padding-right:16px;
+    }
+
+    .hero{
+        gap:30px;
+    }
+
+    h1{
+        font-size:48px;
+
+        letter-spacing:-2.5px;
+    }
+
+    .lead{
+        font-size:16px;
+    }
+
+    .grid,
+    .portfolio,
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .stat{
+        padding:12px;
+    }
+
+    .stat b{
+        font-size:20px;
+    }
+
+    .stat small{
+        font-size:10px;
+    }
+
+    .heroCard{
+        min-height:290px;
+    }
+
+    .codebox{
+        font-size:12px;
+    }
+
+    .title h2{
+        font-size:34px;
+    }
+}
 </style>
 </head>
 
 <body>
-
-<div class="glow one"></div>
-<div class="glow two"></div>
 
 <!-- =========================
      HEADER
@@ -1033,266 +1006,493 @@ footer{
 
 <header>
 
-    <div class="logo">
-        Ciphier<span>CoderUz</span>
-    </div>
+<nav class="nav">
 
-    <button
-        class="menu-btn"
-        onclick="openMenu()"
-        aria-label="Menyu">
-        ☰
-    </button>
+<a class="logo" href="#home">
+Ciphier<span>CoderUz</span>
+</a>
 
-</header>
+<div class="navlinks">
 
+<a href="#home">
+Bosh sahifa
+</a>
 
-<!-- =========================
-     SIDE MENU
-========================= -->
+<a href="#prices">
+💰 Narxlar
+</a>
 
-<div
-    class="overlay"
-    id="overlay"
-    onclick="closeMenu()">
+<a href="#portfolio">
+💼 Portfolio
+</a>
+
+<a href="#services">
+🛠️ Xizmatlar
+</a>
+
+<a href="#about">
+👤 Biz haqimizda
+</a>
+
+<a href="#order">
+📩 Buyurtma
+</a>
+
 </div>
 
-<nav class="side-menu" id="sideMenu">
+<button
+class="menu"
+onclick="toggleMenu()">
+≡
+</button>
 
-    <button
-        class="close-menu"
-        onclick="closeMenu()">
-        ×
-    </button>
+<div
+class="mobile"
+id="mobileMenu">
 
-    <div class="menu-title">
-        NAVIGATION
-    </div>
+<a href="#home" onclick="toggleMenu()">
+🏠 Bosh sahifa
+</a>
 
-    <a
-        href="#home"
-        class="menu-link"
-        onclick="closeMenu()">
-        🏠 Bosh sahifa
-    </a>
+<a href="#prices" onclick="toggleMenu()">
+💰 Narxlar
+</a>
 
-    <a
-        href="#services"
-        class="menu-link"
-        onclick="closeMenu()">
-        ⚡ Xizmatlar
-    </a>
+<a href="#portfolio" onclick="toggleMenu()">
+💼 Portfolio
+</a>
 
-    <a
-        href="#portfolio"
-        class="menu-link"
-        onclick="closeMenu()">
-        📁 Portfolio
-    </a>
+<a href="#services" onclick="toggleMenu()">
+🛠️ Xizmatlar
+</a>
 
-    <a
-        href="#about"
-        class="menu-link"
-        onclick="closeMenu()">
-        👨‍💻 Men haqimda
-    </a>
+<a href="#about" onclick="toggleMenu()">
+👤 Biz haqimizda
+</a>
 
-    <a
-        href="#order"
-        class="menu-link"
-        onclick="closeMenu()">
-        📩 Buyurtma berish
-    </a>
+<a href="#order" onclick="toggleMenu()">
+📩 Buyurtma
+</a>
 
-    <a
-        href="#admin"
-        class="menu-link"
-        onclick="closeMenu()">
-        ⚙️ Admin Panel
-    </a>
+</div>
 
 </nav>
+
+</header>
 
 
 <!-- =========================
      HERO
 ========================= -->
 
-<main id="home">
+<main>
 
-<section class="hero">
+<section
+id="home"
+class="hero">
 
-    <div class="badge">
-        ● DEVELOPER & CODER
-    </div>
+<div class="reveal">
 
-    <h1>
-        G‘oyangizni
-        <span>kodga aylantiramiz.</span>
-    </h1>
+<div class="badge">
 
-    <p>
-        CiphierCoderUz orqali web saytlar,
-        ilovalar, Telegram botlar va
-        maxsus dasturiy loyihalar yaratiladi.
-        Zamonaviy dizayn, tezkor ishlash
-        va kreativ yechimlar.
-    </p>
+<i></i>
 
-    <div class="buttons">
+WEB • CODE • DIGITAL STUDIO
 
-        <a
-            href="#order"
-            class="btn primary">
-            🚀 Buyurtma berish
-        </a>
+</div>
 
-        <a
-            href="#portfolio"
-            class="btn">
-            Portfolio →
-        </a>
+<h1>
 
-    </div>
+Sizning g‘oyangiz.
+
+<br>
+
+<span class="gradient">
+Bizning kodimiz.
+</span>
+
+</h1>
+
+<p class="lead">
+
+CiphierCoderUz — zamonaviy web saytlar,
+Telegram botlar va turli dasturlash
+loyihalarini yaratadigan digital studio.
+
+</p>
+
+<div class="actions">
+
+<a
+class="btn primary"
+href="#order">
+
+🚀 Sayt buyurtma qilish
+
+</a>
+
+<a
+class="btn secondary"
+href="#portfolio">
+
+Portfolio →
+
+</a>
+
+</div>
 
 
-    <!-- TERMINAL -->
+<div class="stats">
 
-    <div class="terminal">
+<div class="stat">
 
-        <div class="terminal-head">
+<b>10K+</b>
 
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+<small>
+Boshlang‘ich
+</small>
 
-            <span class="terminal-name">
-                CiphierCoderUz ~ developer
-            </span>
+</div>
 
-        </div>
+<div class="stat">
 
-        <div class="terminal-body">
+<b>50K</b>
 
-            <div>
-                <span class="green">></span>
-                initializing project...
-                <span class="check">✓</span>
-            </div>
+<small>
+Max narx
+</small>
 
-            <div>
-                <span class="green">></span>
-                Web Development
-                <span class="check">✓</span>
-            </div>
+</div>
 
-            <div>
-                <span class="green">></span>
-                Python / Apps
-                <span class="check">✓</span>
-            </div>
+<div class="stat">
 
-            <div>
-                <span class="green">></span>
-                Telegram Bots
-                <span class="check">✓</span>
-            </div>
+<b>24/7</b>
 
-            <div>
-                <span class="green">></span>
-                Custom Tools
-                <span class="check">✓</span>
-            </div>
+<small>
+Aloqa
+</small>
 
-            <div>
-                <span class="green">></span>
-                CiphierCoderUz<span class="cursor">_</span>
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
+
+
+<!-- TERMINAL -->
+
+<div class="heroCard reveal">
+
+<div class="glow"></div>
+
+<div
+style="
+color:var(--green);
+font-weight:800;
+">
+
+CIPHIERCODERUZ
+
+</div>
+
+<div class="codebox">
+
+<span class="c">
+// your idea → our code
+</span>
+
+<br>
+
+<span class="g">
+const
+</span>
+
+website =
+<span class="g">
+"premium"
+</span>;
+
+<br>
+
+<span class="g">
+const
+</span>
+
+design =
+<span class="g">
+"dark + neon"
+</span>;
+
+<br>
+
+<span class="g">
+const
+</span>
+
+price =
+<span class="g">
+"10K — 50K"
+</span>;
+
+<br><br>
+
+<span class="c">
+status:
+</span>
+
+<span class="g">
+"READY 🚀"
+</span>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- =========================
-     SERVICES
+     PRICES
 ========================= -->
 
-<section id="services" class="reveal">
+<section id="prices">
 
-    <div class="section-label">
-        WHAT I DO
-    </div>
+<div class="title reveal">
 
-    <h2 class="section-title">
-        Xizmatlar
-    </h2>
+<h2>
+💰 Narxlar
+</h2>
 
-    <div class="services-grid">
+<p>
+Barcha paketlar 10 000 — 50 000 so‘m oralig‘ida.
+</p>
 
-        <div class="card">
+</div>
 
-            <div class="card-icon">🌐</div>
 
-            <h3>
-                Web saytlar
-            </h3>
+<div class="grid">
 
-            <p>
-                Zamonaviy, responsive va
-                professional web saytlar.
-            </p>
 
-        </div>
+<!-- SIMPLE -->
 
-        <div class="card">
+<div class="card reveal">
 
-            <div class="card-icon">🤖</div>
+<div class="icon">
+🟢
+</div>
 
-            <h3>
-                Telegram botlar
-            </h3>
+<h3>
+SIMPLE
+</h3>
 
-            <p>
-                Buyurtma, avtomatlashtirish
-                va boshqa bot loyihalari.
-            </p>
+<p>
+Oddiy va tez loyiha.
+</p>
 
-        </div>
+<div class="price">
+10 000
+<small>
+so‘m
+</small>
+</div>
 
-        <div class="card">
+<ul>
 
-            <div class="card-icon">📱</div>
+<li>
+1 sahifa
+</li>
 
-            <h3>
-                Ilovalar
-            </h3>
+<li>
+Responsive
+</li>
 
-            <p>
-                Python va boshqa texnologiyalar
-                orqali foydali dasturlar.
-            </p>
+<li>
+Oddiy dizayn
+</li>
 
-        </div>
+<li>
+Basic animatsiya
+</li>
 
-        <div class="card">
+</ul>
 
-            <div class="card-icon">🛠️</div>
+<a
+class="btn secondary"
+href="#order">
 
-            <h3>
-                Maxsus Tools
-            </h3>
+Tanlash
 
-            <p>
-                Sizga kerak bo‘lgan maxsus
-                kod va avtomatlashtirish vositalari.
-            </p>
+</a>
 
-        </div>
+</div>
 
-    </div>
+
+<!-- NORMAL -->
+
+<div class="card reveal">
+
+<div class="icon">
+🔵
+</div>
+
+<h3>
+NORMAL
+</h3>
+
+<p>
+Chiroyli professional sayt.
+</p>
+
+<div class="price">
+20 000
+<small>
+so‘m
+</small>
+</div>
+
+<ul>
+
+<li>
+3–5 sahifa
+</li>
+
+<li>
+Responsive
+</li>
+
+<li>
+Professional UI
+</li>
+
+<li>
+Animatsiyalar
+</li>
+
+</ul>
+
+<a
+class="btn secondary"
+href="#order">
+
+Tanlash
+
+</a>
+
+</div>
+
+
+<!-- HIGH -->
+
+<div class="card featured reveal">
+
+<span class="tag">
+POPULAR
+</span>
+
+<div class="icon">
+🟣
+</div>
+
+<h3>
+HIGH
+</h3>
+
+<p>
+Premium ko‘rinish va funksiyalar.
+</p>
+
+<div class="price">
+35 000
+<small>
+so‘m
+</small>
+</div>
+
+<ul>
+
+<li>
+5–8 sahifa
+</li>
+
+<li>
+Premium UI/UX
+</li>
+
+<li>
+Kuchli animatsiya
+</li>
+
+<li>
+Telegram integratsiya
+</li>
+
+</ul>
+
+<a
+class="btn primary"
+href="#order">
+
+Tanlash
+
+</a>
+
+</div>
+
+
+<!-- ULTRA -->
+
+<div class="card reveal">
+
+<div class="icon">
+🔥
+</div>
+
+<h3>
+ULTRA
+</h3>
+
+<p>
+Eng to‘liq paket.
+</p>
+
+<div class="price">
+50 000
+<small>
+so‘m
+</small>
+</div>
+
+<ul>
+
+<li>
+8+ sahifa
+</li>
+
+<li>
+Premium dizayn
+</li>
+
+<li>
+Admin panel UI
+</li>
+
+<li>
+Maxsus funksiyalar
+</li>
+
+</ul>
+
+<a
+class="btn secondary"
+href="#order">
+
+Tanlash
+
+</a>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1301,40 +1501,211 @@ footer{
      PORTFOLIO
 ========================= -->
 
-<section id="portfolio" class="reveal">
+<section id="portfolio">
 
-    <div class="section-label">
-        MY WORK
-    </div>
+<div class="title reveal">
 
-    <h2 class="section-title">
-        Portfolio
-    </h2>
+<h2>
+💼 Portfolio
+</h2>
 
-    <div class="portfolio">
+<p>
+Yaratilgan loyihalar va demo ishlar.
+</p>
 
-        <div class="project">
-            <span>WEB</span>
-            <h3>
-                CiphierCoderUz Website
-            </h3>
-        </div>
+</div>
 
-        <div class="project">
-            <span>PYTHON</span>
-            <h3>
-                Developer Tools
-            </h3>
-        </div>
 
-        <div class="project">
-            <span>BOT</span>
-            <h3>
-                Telegram Automation
-            </h3>
-        </div>
+<div class="portfolio">
 
-    </div>
+
+<div class="project reveal">
+
+<span>
+WEB DESIGN
+</span>
+
+<h3>
+Business Landing
+</h3>
+
+<p>
+Dark + neon biznes landing page
+</p>
+
+</div>
+
+
+<div class="project reveal">
+
+<span>
+WEB APP
+</span>
+
+<h3>
+Online Service
+</h3>
+
+<p>
+Responsive xizmat platformasi
+</p>
+
+</div>
+
+
+<div class="project reveal">
+
+<span>
+CODE
+</span>
+
+<h3>
+Custom Project
+</h3>
+
+<p>
+Maxsus HTML/CSS/JS loyiha
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section id="services">
+
+<div class="title reveal">
+
+<h2>
+🛠️ Xizmatlar
+</h2>
+
+<p>
+Web sayt bilan cheklanmaymiz.
+</p>
+
+</div>
+
+
+<div class="grid services">
+
+
+<div class="card reveal">
+
+<div class="icon">
+🌐
+</div>
+
+<h3>
+Web sayt
+</h3>
+
+<p>
+Landing, portfolio, biznes
+va boshqa saytlar.
+</p>
+
+</div>
+
+
+<div class="card reveal">
+
+<div class="icon">
+🤖
+</div>
+
+<h3>
+Telegram Bot
+</h3>
+
+<p>
+Buyurtma, avtomatlashtirish
+va boshqa botlar.
+</p>
+
+</div>
+
+
+<div class="card reveal">
+
+<div class="icon">
+🐍
+</div>
+
+<h3>
+Python
+</h3>
+
+<p>
+Oddiy dasturlar va
+maxsus Python loyihalari.
+</p>
+
+</div>
+
+
+<div class="card reveal">
+
+<div class="icon">
+⚡
+</div>
+
+<h3>
+HTML/CSS/JS
+</h3>
+
+<p>
+Interaktiv web ilovalar
+va mini-loyihalar.
+</p>
+
+</div>
+
+
+<div class="card reveal">
+
+<div class="icon">
+📱
+</div>
+
+<h3>
+Web App
+</h3>
+
+<p>
+Telefon va kompyuterga
+mos web ilovalar.
+</p>
+
+</div>
+
+
+<div class="card reveal">
+
+<div class="icon">
+🧩
+</div>
+
+<h3>
+Maxsus kod
+</h3>
+
+<p>
+G‘oyangizni kodga
+aylantirish.
+</p>
+
+</div>
+
+
+</div>
 
 </section>
 
@@ -1343,30 +1714,44 @@ footer{
      ABOUT
 ========================= -->
 
-<section id="about" class="reveal">
+<section id="about">
 
-    <div class="section-label">
-        ABOUT
-    </div>
+<div class="title reveal">
 
-    <h2 class="section-title">
-        Men haqimda
-    </h2>
+<h2>
+👤 Biz haqimizda
+</h2>
 
-    <div class="about-box">
+<p>
+CiphierCoderUz
+</p>
 
-        Men — CiphierCoderUz.
-        Dasturlash, web development va
-        turli xil kod loyihalari bilan
-        shug‘ullanaman.
+</div>
 
-        <br><br>
 
-        Maqsadim — oddiy g‘oyalarni
-        zamonaviy, foydali va chiroyli
-        raqamli loyihalarga aylantirish.
+<div
+class="card reveal about">
 
-    </div>
+<p
+style="
+font-size:17px;
+line-height:1.9;
+color:var(--muted);
+">
+
+Biz zamonaviy dizayn va kod
+yordamida g‘oyalarni ishlaydigan
+raqamli loyihalarga aylantiramiz.
+
+<br><br>
+
+Web sayt, Telegram bot,
+Python va boshqa dasturlash
+loyihalari bilan ishlaymiz.
+
+</p>
+
+</div>
 
 </section>
 
@@ -1375,140 +1760,176 @@ footer{
      ORDER
 ========================= -->
 
-<section id="order" class="reveal">
+<section id="order">
 
-    <div class="section-label">
-        START PROJECT
-    </div>
+<div class="title reveal">
 
-    <h2 class="section-title">
-        Loyihangizni boshlaymiz
-    </h2>
+<h2>
+📩 Buyurtma berish
+</h2>
 
-    <div class="order-box">
+<p>
+Ma’lumotlarni yozing —
+Telegram orqali suhbatni davom ettiramiz.
+</p>
 
-        <div class="form-grid">
-
-            <input
-                id="name"
-                placeholder="Ismingiz">
-
-            <input
-                id="contact"
-                placeholder="Telegram @username">
-
-            <select id="type">
-
-                <option>
-                    Web sayt
-                </option>
-
-                <option>
-                    Telegram bot
-                </option>
-
-                <option>
-                    Python dastur
-                </option>
-
-                <option>
-                    Mobil ilova
-                </option>
-
-                <option>
-                    Boshqa loyiha
-                </option>
-
-            </select>
-
-            <input
-                id="budget"
-                placeholder="Taxminiy budjet">
-
-            <textarea
-                id="description"
-                class="full"
-                placeholder="Loyihangiz haqida yozing...">
-            </textarea>
-
-            <button
-                class="btn primary full"
-                onclick="sendOrder()">
-
-                🚀 Telegram orqali buyurtma
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
-<!-- =========================
-     ADMIN
-========================= -->
+<div class="order">
 
-<section id="admin" class="admin reveal">
 
-    <div class="section-label">
-        ADMIN
-    </div>
+<div class="info reveal">
 
-    <h2 class="section-title">
-        Admin Panel
-    </h2>
+<h3>
+Loyihangizni boshlaymiz 🚀
+</h3>
 
-    <div class="admin-box">
+<p>
 
-        <div class="admin-stat">
+Formani to‘ldiring.
+Tugmani bosganingizda Telegram
+ochiladi va yozgan ma’lumotlaringiz
+xabar sifatida tayyorlanadi.
 
-            <span>
-                Sayt holati
-            </span>
+</p>
 
-            <strong class="green">
-                ONLINE
-            </strong>
 
-        </div>
+<div class="contactBox">
 
-        <div class="admin-stat">
+💬 Telegram:
 
-            <span>
-                Platforma
-            </span>
+<b
+style="
+color:var(--green);
+">
 
-            <strong>
-                GitHub Pages
-            </strong>
+@C4ph4er
 
-        </div>
+</b>
 
-        <div class="admin-stat">
+</div>
 
-            <span>
-                Buyurtmalar
-            </span>
 
-            <strong id="orderCount">
-                0
-            </strong>
+<div class="contactBox">
 
-        </div>
+💸 Paketlar:
 
-        <br>
+<b
+style="
+color:var(--green);
+">
 
-        <button
-            class="btn"
-            onclick="clearOrders()">
+10K — 50K
 
-            🗑 Buyurtmalar sonini tozalash
+</b>
 
-        </button>
+</div>
 
-    </div>
+</div>
+
+
+<!-- FORM -->
+
+<form
+class="form reveal"
+onsubmit="sendOrder(event)">
+
+
+<label>
+Ismingiz
+</label>
+
+<input
+id="name"
+required
+placeholder="Ismingizni kiriting"
+>
+
+
+<label>
+Loyiha turi
+</label>
+
+<select id="type">
+
+<option>
+Web sayt
+</option>
+
+<option>
+Telegram Bot
+</option>
+
+<option>
+Python dastur
+</option>
+
+<option>
+HTML/CSS/JS
+</option>
+
+<option>
+Web App
+</option>
+
+<option>
+Boshqa
+</option>
+
+</select>
+
+
+<label>
+Daraja
+</label>
+
+<select id="level">
+
+<option>
+SIMPLE — 10 000 so‘m
+</option>
+
+<option>
+NORMAL — 20 000 so‘m
+</option>
+
+<option>
+HIGH — 35 000 so‘m
+</option>
+
+<option>
+ULTRA — 50 000 so‘m
+</option>
+
+</select>
+
+
+<label>
+G‘oyangiz
+</label>
+
+<textarea
+id="idea"
+required
+placeholder="
+Sayt yoki dastur qanday
+bo‘lishini yozing...
+"></textarea>
+
+
+<button
+class="btn primary"
+style="width:100%"
+type="submit">
+
+🚀 Telegram orqali yuborish
+
+</button>
+
+</form>
+
+</div>
 
 </section>
 
@@ -1521,55 +1942,99 @@ footer{
 
 <footer>
 
-    © 2026 CiphierCoderUz
+© 2026 CiphierCoderUz
 
-    <br><br>
+<br><br>
 
-    Built with code & creativity ⚡
+Web • Code • Digital Studio
 
 </footer>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div id="toast">
+
+Telegram ochilmoqda...
+
+</div>
 
 
 <script>
 
 /* =========================
-   MENU
+   MOBILE MENU
 ========================= */
 
-function openMenu(){
+function toggleMenu(){
 
     document
-        .getElementById("sideMenu")
-        .classList
-        .add("active");
-
-    document
-        .getElementById("overlay")
-        .classList
-        .add("active");
+    .getElementById("mobileMenu")
+    .classList
+    .toggle("open");
 
 }
 
-function closeMenu(){
 
-    document
-        .getElementById("sideMenu")
-        .classList
-        .remove("active");
+/* =========================
+   SCROLL ANIMATION
+========================= */
 
-    document
-        .getElementById("overlay")
-        .classList
-        .remove("active");
+const observer =
+new IntersectionObserver(
 
-}
+    function(entries){
+
+        entries.forEach(
+
+            function(entry){
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target
+                    .classList
+                    .add("show");
+
+                }
+
+            }
+
+        );
+
+    },
+
+    {
+        threshold:0.12
+    }
+
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(
+
+    function(element){
+
+        observer.observe(element);
+
+    }
+
+);
 
 
 /* =========================
    TELEGRAM ORDER
 ========================= */
 
-function sendOrder(){
+function sendOrder(event){
+
+    event.preventDefault();
+
 
     const name =
         document
@@ -1577,158 +2042,75 @@ function sendOrder(){
         .value
         .trim();
 
-    const contact =
-        document
-        .getElementById("contact")
-        .value
-        .trim();
 
     const type =
         document
         .getElementById("type")
         .value;
 
-    const budget =
+
+    const level =
         document
-        .getElementById("budget")
+        .getElementById("level")
+        .value;
+
+
+    const idea =
+        document
+        .getElementById("idea")
         .value
         .trim();
-
-    const description =
-        document
-        .getElementById("description")
-        .value
-        .trim();
-
-
-    if(!name || !description){
-
-        alert(
-            "Iltimos, ismingiz va loyiha haqida yozing."
-        );
-
-        return;
-    }
-
-
-    /* local order counter */
-
-    let count =
-        Number(
-            localStorage.getItem(
-                "ciphier_orders"
-            ) || 0
-        );
-
-    count++;
-
-    localStorage.setItem(
-        "ciphier_orders",
-        count
-    );
 
 
     const message =
+
 `🚀 YANGI BUYURTMA
 
 👤 Ism: ${name}
 
-📱 Aloqa: ${contact || "Ko'rsatilmagan"}
+🛠️ Xizmat: ${type}
 
-💻 Loyiha:
-${type}
+💎 Daraja: ${level}
 
-💰 Budjet:
-${budget || "Kelishiladi"}
+📝 G‘oya:
+${idea}
 
-📝 Batafsil:
-${description}`;
+🌐 CiphierCoderUz`;
 
 
     const telegramURL =
-        "https://t.me/C4ph4er?text=" +
+
+        "https://t.me/C4ph4er?text="
+        +
         encodeURIComponent(message);
 
 
-    window.open(
-        telegramURL,
-        "_blank"
-    );
-
-}
+    const toast =
+        document
+        .getElementById("toast");
 
 
-/* =========================
-   ADMIN COUNTER
-========================= */
-
-function updateOrders(){
-
-    const count =
-        localStorage.getItem(
-            "ciphier_orders"
-        ) || 0;
-
-    document
-        .getElementById("orderCount")
-        .textContent = count;
-
-}
-
-function clearOrders(){
-
-    localStorage.removeItem(
-        "ciphier_orders"
-    );
-
-    updateOrders();
-
-    alert(
-        "Buyurtmalar hisoblagichi tozalandi."
-    );
-
-}
-
-updateOrders();
+    toast.classList.add("show");
 
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+    setTimeout(
 
-const observer =
-    new IntersectionObserver(
-        entries => {
+        function(){
 
-            entries.forEach(
-                entry => {
-
-                    if(entry.isIntersecting){
-
-                        entry.target
-                            .classList
-                            .add("show");
-
-                    }
-
-                }
+            window.open(
+                telegramURL,
+                "_blank"
             );
 
         },
-        {
-            threshold:.12
-        }
+
+        400
+
     );
 
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(
-        element =>
-            observer.observe(element)
-    );
+}
 
 </script>
 
 </body>
-               </html>
+   </html>
