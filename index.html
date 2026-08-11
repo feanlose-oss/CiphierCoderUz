@@ -2,20 +2,18 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>CiphierCoderUz | Developer</title>
 
 <meta name="description"
-content="CiphierCoderUz — Web, Apps, Bots va Custom Tools yaratish.">
+content="CiphierCoderUz — web saytlar, ilovalar, botlar va maxsus dasturiy loyihalar yaratadi.">
 
 <style>
 
-/* ================================
+/* =========================
    RESET
-================================ */
+========================= */
 
 *{
     margin:0;
@@ -25,64 +23,50 @@ content="CiphierCoderUz — Web, Apps, Bots va Custom Tools yaratish.">
 }
 
 :root{
-    --black:#020504;
-    --black2:#050908;
-    --panel:#08100d;
-    --panel2:#0b1511;
+    --bg:#020706;
+    --bg2:#06100d;
+    --panel:#091512;
+    --panel2:#0c1b17;
 
-    --green:#00ff88;
-    --green2:#00d66f;
-    --green3:#00ffb3;
+    --green:#00ff9d;
+    --green2:#00d982;
 
-    --white:#f2fff9;
-    --gray:#91a39b;
-    --border:rgba(0,255,136,.15);
-}
+    --text:#f1fff9;
+    --muted:#91aaa2;
 
-html{
-    background:#020504;
+    --border:rgba(0,255,157,.16);
+
+    --shadow:
+        0 0 30px rgba(0,255,157,.08);
 }
 
 body{
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
     background:
         radial-gradient(
-            circle at 50% 0%,
-            rgba(0,255,136,.12),
+            circle at 50% -10%,
+            rgba(0,255,157,.12),
             transparent 35%
         ),
-        radial-gradient(
-            circle at 0% 40%,
-            rgba(0,255,136,.06),
-            transparent 30%
-        ),
-        #020504;
+        var(--bg);
 
-    color:var(--white);
+    color:var(--text);
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    min-height:100vh;
 
     overflow-x:hidden;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button,
-input,
-textarea,
-select{
-    font-family:inherit;
-}
-
-
-/* ================================
-   BACKGROUND EFFECT
-================================ */
+/* =========================
+   BACKGROUND
+========================= */
 
 body::before{
     content:"";
@@ -93,18 +77,20 @@ body::before{
 
     pointer-events:none;
 
+    opacity:.18;
+
     background-image:
         linear-gradient(
-            rgba(0,255,136,.025) 1px,
+            rgba(0,255,157,.035) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(0,255,136,.025) 1px,
+            rgba(0,255,157,.035) 1px,
             transparent 1px
         );
 
-    background-size:50px 50px;
+    background-size:40px 40px;
 
     mask-image:
         linear-gradient(
@@ -112,353 +98,477 @@ body::before{
             black,
             transparent 80%
         );
-
-    z-index:-1;
 }
 
+.glow{
+    position:fixed;
 
-/* ================================
-   NAVBAR
-================================ */
+    width:350px;
+    height:350px;
 
-nav{
+    border-radius:50%;
+
+    background:rgba(0,255,157,.08);
+
+    filter:blur(100px);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    animation:moveGlow 10s infinite alternate ease-in-out;
+}
+
+.glow.one{
+    top:10%;
+    left:-150px;
+}
+
+.glow.two{
+    bottom:5%;
+    right:-150px;
+
+    animation-delay:3s;
+}
+
+@keyframes moveGlow{
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(80px,50px);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
     position:fixed;
 
     top:0;
     left:0;
+    right:0;
 
-    width:100%;
+    height:76px;
 
-    z-index:999;
-
-    background:
-        rgba(2,5,4,.82);
-
-    backdrop-filter:blur(18px);
-
-    border-bottom:
-        1px solid rgba(0,255,136,.08);
-}
-
-.nav{
-    max-width:1150px;
-
-    margin:auto;
-
-    padding:18px 25px;
+    z-index:1000;
 
     display:flex;
 
     align-items:center;
 
     justify-content:space-between;
+
+    padding:0 7%;
+
+    background:
+        rgba(2,7,6,.72);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(0,255,157,.08);
 }
 
 .logo{
-    font-size:21px;
+    font-size:22px;
 
-    font-weight:900;
+    font-weight:800;
 
-    letter-spacing:-.5px;
+    letter-spacing:-1px;
+
+    color:white;
 }
 
 .logo span{
     color:var(--green);
 
     text-shadow:
-        0 0 15px rgba(0,255,136,.7);
+        0 0 15px rgba(0,255,157,.55);
 }
 
-.links{
-    display:flex;
+/* =========================
+   MENU BUTTON
+========================= */
 
-    gap:28px;
+.menu-btn{
+    width:46px;
+    height:46px;
 
-    list-style:none;
-}
+    border:1px solid var(--border);
 
-.links a{
-    color:#8da098;
+    background:rgba(0,255,157,.04);
 
-    font-size:14px;
+    color:white;
 
-    transition:.25s;
-}
+    border-radius:12px;
 
-.links a:hover{
-    color:var(--green);
+    font-size:25px;
 
-    text-shadow:
-        0 0 10px rgba(0,255,136,.5);
-}
-
-
-/* ================================
-   HERO
-================================ */
-
-.hero{
-    min-height:100vh;
-
-    max-width:1150px;
-
-    margin:auto;
-
-    padding:
-        120px 25px 90px;
+    cursor:pointer;
 
     display:flex;
-
-    align-items:center;
-}
-
-.hero-content{
-    width:100%;
-
-    max-width:820px;
-
-    margin:auto;
-}
-
-.badge{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:
-        10px 17px;
-
-    border:
-        1px solid
-        rgba(0,255,136,.25);
-
-    background:
-        rgba(0,255,136,.055);
-
-    border-radius:50px;
-
-    color:var(--green);
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    letter-spacing:1px;
-
-    box-shadow:
-        0 0 25px
-        rgba(0,255,136,.05);
-}
-
-.badge::before{
-    content:"";
-
-    width:7px;
-    height:7px;
-
-    background:var(--green);
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 12px var(--green);
-}
-
-.hero h1{
-    margin-top:28px;
-
-    font-size:
-        clamp(45px,8vw,82px);
-
-    line-height:.98;
-
-    letter-spacing:-4px;
-}
-
-.hero h1 span{
-    display:block;
-
-    color:var(--green);
-
-    text-shadow:
-        0 0 25px
-        rgba(0,255,136,.28);
-}
-
-.hero-description{
-    margin-top:28px;
-
-    max-width:700px;
-
-    color:var(--gray);
-
-    font-size:18px;
-
-    line-height:1.75;
-}
-
-.buttons{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:14px;
-
-    margin-top:32px;
-}
-
-.btn{
-    display:inline-flex;
 
     align-items:center;
 
     justify-content:center;
 
-    padding:
-        15px 23px;
-
-    border-radius:11px;
-
-    font-size:14px;
-
-    font-weight:800;
-
     transition:.3s;
+}
+
+.menu-btn:hover{
+    color:var(--green);
+
+    border-color:var(--green);
+
+    box-shadow:
+        0 0 20px rgba(0,255,157,.2);
+}
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.side-menu{
+    position:fixed;
+
+    top:0;
+    right:-340px;
+
+    width:320px;
+
+    height:100vh;
+
+    z-index:2000;
+
+    padding:100px 25px 30px;
+
+    background:
+        rgba(3,10,8,.97);
+
+    backdrop-filter:blur(25px);
+
+    border-left:
+        1px solid
+        var(--border);
+
+    box-shadow:
+        -20px 0 60px
+        rgba(0,0,0,.5);
+
+    transition:.45s cubic-bezier(.77,0,.18,1);
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.close-menu{
+    position:absolute;
+
+    top:25px;
+    right:25px;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:28px;
 
     cursor:pointer;
 }
 
-.primary{
-    background:var(--green);
+.menu-title{
+    color:var(--green);
 
-    color:#00150b;
+    font-size:12px;
 
-    box-shadow:
-        0 0 30px
-        rgba(0,255,136,.18);
+    letter-spacing:3px;
+
+    margin-bottom:25px;
 }
 
-.primary:hover{
-    transform:
-        translateY(-3px);
+.menu-link{
+    display:flex;
 
-    box-shadow:
-        0 0 45px
-        rgba(0,255,136,.4);
+    align-items:center;
+
+    gap:13px;
+
+    padding:15px;
+
+    margin:7px 0;
+
+    color:#c9d8d3;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    border:1px solid transparent;
+
+    transition:.25s;
 }
 
-.secondary{
-    border:
-        1px solid
-        rgba(255,255,255,.09);
+.menu-link:hover{
+    color:var(--green);
 
     background:
-        rgba(255,255,255,.025);
+        rgba(0,255,157,.06);
+
+    border-color:var(--border);
+
+    transform:translateX(5px);
+}
+
+.overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    z-index:1500;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+}
+
+.overlay.active{
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    padding:
+        150px 7%
+        70px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    position:relative;
+}
+
+.badge{
+    width:max-content;
+
+    padding:9px 16px;
+
+    border-radius:30px;
+
+    color:var(--green);
+
+    font-size:12px;
+
+    letter-spacing:1.5px;
+
+    border:1px solid var(--border);
+
+    background:
+        rgba(0,255,157,.04);
+
+    margin-bottom:25px;
+
+    animation:fadeUp .8s ease both;
+}
+
+.hero h1{
+    max-width:850px;
+
+    font-size:
+        clamp(48px,8vw,92px);
+
+    line-height:.98;
+
+    letter-spacing:-4px;
+
+    animation:fadeUp .9s .1s ease both;
+}
+
+.hero h1 span{
+    background:
+        linear-gradient(
+            90deg,
+            #00ff9d,
+            #00d9ff,
+            #8b7cff
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+    background-size:200% auto;
+
+    animation:gradientMove 4s linear infinite;
+}
+
+.hero p{
+    max-width:700px;
+
+    margin-top:30px;
+
+    color:var(--muted);
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    animation:fadeUp .9s .2s ease both;
+}
+
+.buttons{
+    display:flex;
+
+    gap:14px;
+
+    margin-top:32px;
+
+    flex-wrap:wrap;
+
+    animation:fadeUp .9s .3s ease both;
+}
+
+.btn{
+    padding:16px 23px;
+
+    border-radius:13px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.02);
 
     color:white;
 }
 
-.secondary:hover{
-    border-color:var(--green);
+.btn.primary{
+    color:#00140d;
 
-    color:var(--green);
+    background:
+        linear-gradient(
+            135deg,
+            #00ff9d,
+            #00d982
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(0,255,157,.22);
 }
 
+.btn:hover{
+    transform:translateY(-4px);
 
-/* ================================
+    box-shadow:
+        0 10px 30px
+        rgba(0,255,157,.12);
+}
+
+/* =========================
    TERMINAL
-================================ */
+========================= */
 
-.code-terminal{
+.terminal{
     width:100%;
 
     max-width:720px;
 
-    margin-top:48px;
+    margin-top:55px;
 
-    background:
-        #030706;
+    background:#030807;
 
-    border:
-        1px solid
-        rgba(0,255,136,.22);
+    border:1px solid var(--border);
 
-    border-radius:17px;
+    border-radius:18px;
 
     overflow:hidden;
 
     box-shadow:
-        0 0 45px
-        rgba(0,255,136,.08),
-
-        inset 0 0 35px
-        rgba(0,255,136,.025);
+        0 0 50px
+        rgba(0,255,157,.08);
 
     animation:
-        terminalFloat 4s
-        ease-in-out infinite;
+        fadeUp 1s .45s ease both,
+        floatTerminal 5s ease-in-out infinite;
 }
 
-.terminal-top{
+.terminal-head{
     height:48px;
-
-    padding:
-        0 17px;
 
     display:flex;
 
     align-items:center;
 
-    background:
-        #07100c;
+    gap:8px;
+
+    padding:0 16px;
+
+    background:#07100d;
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.06);
+        rgba(255,255,255,.05);
 }
 
-.terminal-dots{
-    display:flex;
-
-    gap:7px;
-}
-
-.terminal-dots span{
-    width:9px;
-
-    height:9px;
+.dot{
+    width:10px;
+    height:10px;
 
     border-radius:50%;
 
-    background:#26332d;
+    background:#33433e;
 }
 
-.terminal-title{
-    margin-left:15px;
+.terminal-name{
+    margin-left:10px;
 
-    color:#607069;
+    color:#71847d;
 
     font-size:12px;
 
-    font-family:
-        "Courier New",
-        monospace;
+    font-family:monospace;
 }
 
 .terminal-body{
     padding:23px;
 
-    color:#aebdb5;
-
     font-family:
         "Courier New",
         monospace;
 
-    font-size:14px;
+    color:#a9bbb5;
 
     line-height:2;
+
+    font-size:14px;
 }
 
 .green{
@@ -466,185 +576,145 @@ nav{
 
     text-shadow:
         0 0 10px
-        rgba(0,255,136,.55);
+        rgba(0,255,157,.5);
 }
 
-.done{
+.check{
     color:var(--green);
 
     margin-left:8px;
 }
 
-.terminal-line{
-    margin-top:8px;
-
-    color:white;
-}
-
 .cursor{
     color:var(--green);
 
-    animation:
-        blink .8s infinite;
+    animation:blink .8s infinite;
 }
 
 @keyframes blink{
-
-    0%,50%{
-        opacity:1;
-    }
-
-    51%,100%{
+    50%{
         opacity:0;
     }
-
 }
 
-@keyframes terminalFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
+@keyframes floatTerminal{
     50%{
-        transform:translateY(-5px);
+        transform:translateY(-7px);
     }
-
 }
 
-
-/* ================================
-   SECTION
-================================ */
+/* =========================
+   SECTIONS
+========================= */
 
 section{
-    max-width:1150px;
-
-    margin:auto;
-
-    padding:
-        100px 25px;
+    padding:110px 7%;
 }
 
-.title{
-    text-align:center;
-
-    margin-bottom:48px;
-}
-
-.title small{
+.section-label{
     color:var(--green);
 
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-
-    font-weight:bold;
-
     font-size:12px;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
 }
 
-.title h2{
-    margin-top:10px;
+.section-title{
+    font-size:
+        clamp(32px,5vw,55px);
 
-    font-size:38px;
+    margin-bottom:45px;
 
-    letter-spacing:-1px;
+    letter-spacing:-2px;
 }
 
-.title p{
-    margin-top:12px;
-
-    color:var(--gray);
-}
-
-
-/* ================================
+/* =========================
    SERVICES
-================================ */
+========================= */
 
-.cards{
+.services-grid{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(4,1fr);
 
     gap:18px;
 }
 
 .card{
-    padding:28px;
+    padding:27px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(0,255,136,.045),
-            rgba(255,255,255,.012)
+            rgba(0,255,157,.05),
+            rgba(255,255,255,.015)
         );
 
-    border:
-        1px solid
-        var(--border);
+    border:1px solid var(--border);
 
     border-radius:18px;
 
-    transition:.3s;
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    top:-50px;
+    right:-50px;
+
+    background:var(--green);
+
+    filter:blur(60px);
+
+    opacity:.08;
 }
 
 .card:hover{
     transform:
-        translateY(-7px);
+        translateY(-8px);
 
     border-color:
-        rgba(0,255,136,.4);
+        rgba(0,255,157,.4);
 
     box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.35),
-
-        0 0 25px
-        rgba(0,255,136,.04);
+        0 15px 40px
+        rgba(0,255,157,.08);
 }
 
-.icon{
-    width:50px;
+.card-icon{
+    font-size:30px;
 
-    height:50px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:13px;
-
-    background:
-        rgba(0,255,136,.08);
-
-    color:var(--green);
-
-    font-size:22px;
-
-    margin-bottom:19px;
+    margin-bottom:18px;
 }
 
 .card h3{
-    margin-bottom:11px;
+    margin-bottom:10px;
 }
 
 .card p{
-    color:var(--gray);
+    color:var(--muted);
 
-    line-height:1.65;
+    line-height:1.7;
 
     font-size:14px;
 }
 
-
-/* ================================
+/* =========================
    PORTFOLIO
-================================ */
+========================= */
 
 .portfolio{
     display:grid;
@@ -652,13 +722,24 @@ section{
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:18px;
+    gap:20px;
 }
 
 .project{
-    min-height:220px;
+    min-height:230px;
 
     padding:25px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b1814,
+            #040908
+        );
+
+    border:1px solid var(--border);
 
     display:flex;
 
@@ -666,154 +747,74 @@ section{
 
     justify-content:flex-end;
 
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #09120e,
-            #030706
-        );
-
-    transition:.3s;
+    transition:.35s;
 }
 
 .project:hover{
     transform:
-        translateY(-6px);
+        translateY(-8px)
+        scale(1.01);
 
-    border-color:
-        rgba(0,255,136,.35);
+    border-color:var(--green);
 }
 
-.project small{
+.project span{
     color:var(--green);
 
-    margin-bottom:8px;
+    font-size:12px;
 
-    letter-spacing:1px;
+    margin-bottom:10px;
 }
 
-.project p{
-    color:var(--gray);
-
-    font-size:13px;
-
-    margin-top:8px;
+.project h3{
+    font-size:23px;
 }
 
+/* =========================
+   ABOUT
+========================= */
 
-/* ================================
-   PROCESS
-================================ */
-
-.steps{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:15px;
-}
-
-.step{
-    padding:25px 15px;
-
-    text-align:center;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:16px;
-
-    background:
-        rgba(0,255,136,.018);
-}
-
-.number{
-    width:43px;
-
-    height:43px;
-
-    margin:
-        0 auto 15px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:var(--green);
-
-    color:#00150b;
-
-    font-weight:900;
-
-    box-shadow:
-        0 0 20px
-        rgba(0,255,136,.18);
-}
-
-.step p{
-    margin-top:8px;
-
-    color:var(--gray);
-
-    font-size:13px;
-
-    line-height:1.5;
-}
-
-
-/* ================================
-   ORDER
-================================ */
-
-.order-box{
-    max-width:700px;
-
-    margin:auto;
+.about-box{
+    max-width:850px;
 
     padding:35px;
 
-    border-radius:22px;
-
-    border:
-        1px solid
-        rgba(0,255,136,.16);
+    border:1px solid var(--border);
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(0,255,136,.045),
-            rgba(255,255,255,.015)
-        );
+        rgba(0,255,157,.025);
 
-    box-shadow:
-        0 20px 70px
-        rgba(0,0,0,.3);
+    border-radius:20px;
+
+    color:#a9bbb5;
+
+    line-height:1.9;
 }
 
-.group{
-    margin-bottom:18px;
+/* =========================
+   ORDER
+========================= */
+
+.order-box{
+    max-width:800px;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    background:
+        rgba(0,255,157,.025);
 }
 
-.group label{
-    display:block;
+.form-grid{
+    display:grid;
 
-    color:#b5c4bd;
+    grid-template-columns:
+        1fr 1fr;
 
-    font-size:13px;
-
-    margin-bottom:8px;
+    gap:15px;
 }
 
 input,
@@ -821,31 +822,19 @@ textarea,
 select{
     width:100%;
 
-    padding:14px 15px;
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:#050c0a;
 
     color:white;
 
-    background:#030706;
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    border-radius:10px;
-
     outline:none;
 
-    font-size:14px;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-    border-color:var(--green);
-
-    box-shadow:
-        0 0 18px
-        rgba(0,255,136,.08);
+    font:inherit;
 }
 
 textarea{
@@ -854,921 +843,733 @@ textarea{
     resize:vertical;
 }
 
-.order-button{
-    width:100%;
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:var(--green);
 
-    border:none;
+    box-shadow:
+        0 0 15px
+        rgba(0,255,157,.08);
 }
 
-
-/* ================================
-   CONTACT
-================================ */
-
-.contact{
-    text-align:center;
+.full{
+    grid-column:1/-1;
 }
 
-.contact .title{
-    margin-bottom:0;
+/* =========================
+   ADMIN
+========================= */
+
+.admin{
+    display:none;
 }
 
-.contact p{
-    color:var(--gray);
-
-    margin:
-        14px 0 25px;
+.admin.active{
+    display:block;
 }
 
+.admin-box{
+    max-width:700px;
 
-/* ================================
+    padding:30px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    background:#06100d;
+}
+
+.admin-stat{
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:18px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+}
+
+/* =========================
    FOOTER
-================================ */
+========================= */
 
 footer{
-    padding:
-        35px 20px;
-
-    text-align:center;
-
-    color:#65736d;
-
-    font-size:13px;
+    padding:40px 7%;
 
     border-top:
         1px solid
-        rgba(0,255,136,.08);
+        rgba(0,255,157,.08);
+
+    color:#60736c;
+
+    text-align:center;
+
+    font-size:13px;
 }
 
-footer strong{
-    color:var(--green);
+/* =========================
+   ANIMATION
+========================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity .7s,
+        transform .7s;
 }
 
+.reveal.show{
+    opacity:1;
 
-/* ================================
-   MOBILE
-================================ */
+    transform:translateY(0);
+}
 
-@media(max-width:850px){
+@keyframes fadeUp{
+    from{
+        opacity:0;
 
-    .links{
-        display:none;
+        transform:translateY(25px);
     }
 
-    .cards,
-    .portfolio{
-        grid-template-columns:1fr;
-    }
+    to{
+        opacity:1;
 
-    .steps{
+        transform:translateY(0);
+    }
+}
+
+@keyframes gradientMove{
+    to{
+        background-position:
+            200% center;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .services-grid{
         grid-template-columns:
             repeat(2,1fr);
     }
 
+    .portfolio{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
 }
 
 @media(max-width:600px){
 
+    header{
+        padding:0 20px;
+    }
+
     .hero{
         padding:
-            110px 20px 70px;
-    }
-
-    .hero h1{
-        font-size:
-            clamp(43px,12vw,65px);
-
-        letter-spacing:-3px;
-    }
-
-    .hero-description{
-        font-size:16px;
-
-        line-height:1.65;
+            125px 20px 60px;
     }
 
     section{
         padding:
-            75px 20px;
+            80px 20px;
     }
 
-    .title h2{
-        font-size:30px;
+    .hero h1{
+        font-size:52px;
+
+        letter-spacing:-3px;
     }
 
-    .steps{
-        grid-template-columns:1fr;
+    .hero p{
+        font-size:15px;
     }
 
-    .order-box{
-        padding:22px;
+    .terminal{
+        margin-top:40px;
     }
 
     .terminal-body{
-        padding:18px;
+        font-size:11px;
 
-        font-size:12px;
-
-        line-height:1.9;
-
-        overflow-x:auto;
+        padding:17px;
     }
 
-    .terminal-title{
-        font-size:10px;
+    .services-grid,
+    .portfolio{
+        grid-template-columns:1fr;
     }
 
-}
-
-
-/* ================================
-   EXTRA SMALL
-================================ */
-
-@media(max-width:400px){
-
-    .buttons{
-        flex-direction:column;
+    .form-grid{
+        grid-template-columns:1fr;
     }
 
-    .btn{
-        width:100%;
+    .side-menu{
+        width:290px;
     }
-
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ================================
-     NAVBAR
-================================ -->
-
-<nav>
-
-<div class="nav">
-
-<a
-href="#home"
-class="logo">
-
-Ciphier<span>CoderUz</span>
-
-</a>
-
-
-<ul class="links">
-
-<li>
-<a href="#home">
-Bosh sahifa
-</a>
-</li>
-
-<li>
-<a href="#services">
-Xizmatlar
-</a>
-</li>
-
-<li>
-<a href="#portfolio">
-Portfolio
-</a>
-</li>
-
-<li>
-<a href="#order">
-Buyurtma
-</a>
-</li>
-
-</ul>
-
-</div>
-
-</nav>
-
-
-
-<!-- ================================
-     HERO
-================================ -->
-
-<header
-class="hero"
-id="home">
-
-
-<div class="hero-content">
-
-
-<div class="badge">
-
-DEVELOPER & CODER
-
-</div>
-
-
-<h1>
-
-Sizning g‘oyangiz.
-
-<span>
-Bizning kodimiz.
-</span>
-
-</h1>
-
-
-<p class="hero-description">
-
-CiphierCoderUz orqali web saytlar,
-ilovalar, Telegram botlar va turli
-maxsus dasturiy loyihalarni yaratamiz.
-
-</p>
-
-
-<div class="buttons">
-
-<a
-href="#order"
-class="btn primary">
-
-🚀 Buyurtma qilish
-
-</a>
-
-
-<a
-href="#portfolio"
-class="btn secondary">
-
-Portfolio →
-
-</a>
-
-</div>
-
-
-
-<!-- ================================
-     TERMINAL
-================================ -->
-
-<div class="code-terminal">
-
-
-<div class="terminal-top">
-
-
-<div class="terminal-dots">
-
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-
-<span class="terminal-title">
-
-CiphierCoderUz ~ developer
-
-</span>
-
-
-</div>
-
-
-<div class="terminal-body">
-
-
-<div>
-
-<span class="green">></span>
-
-initializing project...
-
-<span class="done">✓</span>
-
-</div>
-
-
-<div>
-
-<span class="green">></span>
-
-Web Development
-
-<span class="done">✓</span>
-
-</div>
-
-
-<div>
-
-<span class="green">></span>
-
-Python / Apps
-
-<span class="done">✓</span>
-
-</div>
-
-
-<div>
-
-<span class="green">></span>
-
-Telegram Bots
-
-<span class="done">✓</span>
-
-</div>
-
-
-<div>
-
-<span class="green">></span>
-
-Custom Tools
-
-<span class="done">✓</span>
-
-</div>
-
-
-<div class="terminal-line">
-
-<span class="green">></span>
-
-CiphierCoderUz<span class="cursor">_</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-</div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="logo">
+        Ciphier<span>CoderUz</span>
+    </div>
+
+    <button
+        class="menu-btn"
+        onclick="openMenu()"
+        aria-label="Menyu">
+        ☰
+    </button>
 
 </header>
 
 
+<!-- =========================
+     SIDE MENU
+========================= -->
 
-<!-- ================================
+<div
+    class="overlay"
+    id="overlay"
+    onclick="closeMenu()">
+</div>
+
+<nav class="side-menu" id="sideMenu">
+
+    <button
+        class="close-menu"
+        onclick="closeMenu()">
+        ×
+    </button>
+
+    <div class="menu-title">
+        NAVIGATION
+    </div>
+
+    <a
+        href="#home"
+        class="menu-link"
+        onclick="closeMenu()">
+        🏠 Bosh sahifa
+    </a>
+
+    <a
+        href="#services"
+        class="menu-link"
+        onclick="closeMenu()">
+        ⚡ Xizmatlar
+    </a>
+
+    <a
+        href="#portfolio"
+        class="menu-link"
+        onclick="closeMenu()">
+        📁 Portfolio
+    </a>
+
+    <a
+        href="#about"
+        class="menu-link"
+        onclick="closeMenu()">
+        👨‍💻 Men haqimda
+    </a>
+
+    <a
+        href="#order"
+        class="menu-link"
+        onclick="closeMenu()">
+        📩 Buyurtma berish
+    </a>
+
+    <a
+        href="#admin"
+        class="menu-link"
+        onclick="closeMenu()">
+        ⚙️ Admin Panel
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="home">
+
+<section class="hero">
+
+    <div class="badge">
+        ● DEVELOPER & CODER
+    </div>
+
+    <h1>
+        G‘oyangizni
+        <span>kodga aylantiramiz.</span>
+    </h1>
+
+    <p>
+        CiphierCoderUz orqali web saytlar,
+        ilovalar, Telegram botlar va
+        maxsus dasturiy loyihalar yaratiladi.
+        Zamonaviy dizayn, tezkor ishlash
+        va kreativ yechimlar.
+    </p>
+
+    <div class="buttons">
+
+        <a
+            href="#order"
+            class="btn primary">
+            🚀 Buyurtma berish
+        </a>
+
+        <a
+            href="#portfolio"
+            class="btn">
+            Portfolio →
+        </a>
+
+    </div>
+
+
+    <!-- TERMINAL -->
+
+    <div class="terminal">
+
+        <div class="terminal-head">
+
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+            <span class="terminal-name">
+                CiphierCoderUz ~ developer
+            </span>
+
+        </div>
+
+        <div class="terminal-body">
+
+            <div>
+                <span class="green">></span>
+                initializing project...
+                <span class="check">✓</span>
+            </div>
+
+            <div>
+                <span class="green">></span>
+                Web Development
+                <span class="check">✓</span>
+            </div>
+
+            <div>
+                <span class="green">></span>
+                Python / Apps
+                <span class="check">✓</span>
+            </div>
+
+            <div>
+                <span class="green">></span>
+                Telegram Bots
+                <span class="check">✓</span>
+            </div>
+
+            <div>
+                <span class="green">></span>
+                Custom Tools
+                <span class="check">✓</span>
+            </div>
+
+            <div>
+                <span class="green">></span>
+                CiphierCoderUz<span class="cursor">_</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
      SERVICES
-================================ -->
+========================= -->
 
-<section id="services">
+<section id="services" class="reveal">
 
+    <div class="section-label">
+        WHAT I DO
+    </div>
 
-<div class="title">
+    <h2 class="section-title">
+        Xizmatlar
+    </h2>
 
-<small>
-Xizmatlar
-</small>
+    <div class="services-grid">
 
-<h2>
-Nimalar qilamiz?
-</h2>
+        <div class="card">
 
-<p>
-G‘oyangizni haqiqiy loyihaga aylantiramiz.
-</p>
+            <div class="card-icon">🌐</div>
 
-</div>
+            <h3>
+                Web saytlar
+            </h3>
 
+            <p>
+                Zamonaviy, responsive va
+                professional web saytlar.
+            </p>
 
+        </div>
 
-<div class="cards">
+        <div class="card">
 
+            <div class="card-icon">🤖</div>
 
-<div class="card">
+            <h3>
+                Telegram botlar
+            </h3>
 
-<div class="icon">
-🌐
-</div>
+            <p>
+                Buyurtma, avtomatlashtirish
+                va boshqa bot loyihalari.
+            </p>
 
-<h3>
-Web saytlar
-</h3>
+        </div>
 
-<p>
-Zamonaviy, responsive va tezkor
-web saytlar yaratamiz.
-</p>
+        <div class="card">
 
-</div>
+            <div class="card-icon">📱</div>
 
+            <h3>
+                Ilovalar
+            </h3>
 
+            <p>
+                Python va boshqa texnologiyalar
+                orqali foydali dasturlar.
+            </p>
 
-<div class="card">
+        </div>
 
-<div class="icon">
-📱
-</div>
+        <div class="card">
 
-<h3>
-Apps
-</h3>
+            <div class="card-icon">🛠️</div>
 
-<p>
-Telefon va kompyuter uchun
-foydali dasturlar yaratamiz.
-</p>
+            <h3>
+                Maxsus Tools
+            </h3>
 
-</div>
+            <p>
+                Sizga kerak bo‘lgan maxsus
+                kod va avtomatlashtirish vositalari.
+            </p>
 
+        </div>
 
-
-<div class="card">
-
-<div class="icon">
-🤖
-</div>
-
-<h3>
-Telegram Bots
-</h3>
-
-<p>
-Telegram uchun avtomatlashtirilgan
-va foydali botlar yaratamiz.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-🐍
-</div>
-
-<h3>
-Python
-</h3>
-
-<p>
-Python orqali turli xil
-avtomatlashtirish va utility dasturlar.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-🛠️
-</div>
-
-<h3>
-Custom Tools
-</h3>
-
-<p>
-Sizga kerak bo‘lgan maxsus
-kod va vositalarni yaratamiz.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-⚡
-</div>
-
-<h3>
-Maxsus loyihalar
-</h3>
-
-<p>
-Oddiy g‘oyadan murakkab loyihagacha
-noldan ishlab chiqamiz.
-</p>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
-
-<!-- ================================
+<!-- =========================
      PORTFOLIO
-================================ -->
+========================= -->
 
-<section id="portfolio">
+<section id="portfolio" class="reveal">
 
+    <div class="section-label">
+        MY WORK
+    </div>
 
-<div class="title">
+    <h2 class="section-title">
+        Portfolio
+    </h2>
 
-<small>
-Portfolio
-</small>
+    <div class="portfolio">
 
-<h2>
-Loyihalarimiz
-</h2>
+        <div class="project">
+            <span>WEB</span>
+            <h3>
+                CiphierCoderUz Website
+            </h3>
+        </div>
 
-<p>
-Yangi loyihalar shu yerda ko‘rinadi.
-</p>
+        <div class="project">
+            <span>PYTHON</span>
+            <h3>
+                Developer Tools
+            </h3>
+        </div>
 
-</div>
+        <div class="project">
+            <span>BOT</span>
+            <h3>
+                Telegram Automation
+            </h3>
+        </div>
 
-
-
-<div class="portfolio">
-
-
-<div class="project">
-
-<small>
-WEB
-</small>
-
-<h3>
-Web Project
-</h3>
-
-<p>
-Zamonaviy web loyiha.
-</p>
-
-</div>
-
-
-
-<div class="project">
-
-<small>
-APP
-</small>
-
-<h3>
-Application
-</h3>
-
-<p>
-Maxsus dastur loyihasi.
-</p>
-
-</div>
-
-
-
-<div class="project">
-
-<small>
-BOT
-</small>
-
-<h3>
-Telegram Bot
-</h3>
-
-<p>
-Avtomatlashtirilgan bot.
-</p>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
+<!-- =========================
+     ABOUT
+========================= -->
 
-<!-- ================================
-     PROCESS
-================================ -->
+<section id="about" class="reveal">
 
-<section>
+    <div class="section-label">
+        ABOUT
+    </div>
 
+    <h2 class="section-title">
+        Men haqimda
+    </h2>
 
-<div class="title">
+    <div class="about-box">
 
-<small>
-Jarayon
-</small>
+        Men — CiphierCoderUz.
+        Dasturlash, web development va
+        turli xil kod loyihalari bilan
+        shug‘ullanaman.
 
-<h2>
-Qanday ishlaymiz?
-</h2>
+        <br><br>
 
-</div>
+        Maqsadim — oddiy g‘oyalarni
+        zamonaviy, foydali va chiroyli
+        raqamli loyihalarga aylantirish.
 
-
-
-<div class="steps">
-
-
-<div class="step">
-
-<div class="number">
-1
-</div>
-
-<h3>
-Buyurtma
-</h3>
-
-<p>
-Formani to‘ldirasiz va loyiha
-haqida ma’lumot yuborasiz.
-</p>
-
-</div>
-
-
-
-<div class="step">
-
-<div class="number">
-2
-</div>
-
-<h3>
-Suhbat
-</h3>
-
-<p>
-Telegram orqali loyiha
-tafsilotlarini muhokama qilamiz.
-</p>
-
-</div>
-
-
-
-<div class="step">
-
-<div class="number">
-3
-</div>
-
-<h3>
-Yaratish
-</h3>
-
-<p>
-Loyihangizni kodlash va
-dizayn qilishni boshlaymiz.
-</p>
-
-</div>
-
-
-
-<div class="step">
-
-<div class="number">
-4
-</div>
-
-<h3>
-Topshirish
-</h3>
-
-<p>
-Tayyor loyihani sizga
-topshiramiz.
-</p>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
-
-<!-- ================================
+<!-- =========================
      ORDER
-================================ -->
+========================= -->
 
-<section id="order">
+<section id="order" class="reveal">
 
+    <div class="section-label">
+        START PROJECT
+    </div>
 
-<div class="title">
+    <h2 class="section-title">
+        Loyihangizni boshlaymiz
+    </h2>
 
-<small>
-Buyurtma
-</small>
+    <div class="order-box">
 
-<h2>
-Loyihangizni boshlaymiz
-</h2>
+        <div class="form-grid">
 
-<p>
-Formani to‘ldiring va Telegram orqali
-biz bilan bog‘laning.
-</p>
+            <input
+                id="name"
+                placeholder="Ismingiz">
 
-</div>
+            <input
+                id="contact"
+                placeholder="Telegram @username">
 
+            <select id="type">
 
+                <option>
+                    Web sayt
+                </option>
 
-<div class="order-box">
+                <option>
+                    Telegram bot
+                </option>
 
+                <option>
+                    Python dastur
+                </option>
 
-<form id="orderForm">
+                <option>
+                    Mobil ilova
+                </option>
 
+                <option>
+                    Boshqa loyiha
+                </option>
 
-<div class="group">
+            </select>
 
-<label>
-Ismingiz
-</label>
+            <input
+                id="budget"
+                placeholder="Taxminiy budjet">
 
-<input
-type="text"
-id="name"
-placeholder="Ismingiz"
-required>
+            <textarea
+                id="description"
+                class="full"
+                placeholder="Loyihangiz haqida yozing...">
+            </textarea>
 
-</div>
+            <button
+                class="btn primary full"
+                onclick="sendOrder()">
 
+                🚀 Telegram orqali buyurtma
 
+            </button>
 
-<div class="group">
+        </div>
 
-<label>
-Telegram username
-</label>
-
-<input
-type="text"
-id="telegram"
-placeholder="@username"
-required>
-
-</div>
-
-
-
-<div class="group">
-
-<label>
-Loyiha turi
-</label>
-
-<select id="type">
-
-<option>
-Web sayt
-</option>
-
-<option>
-Mobil / Desktop App
-</option>
-
-<option>
-Telegram Bot
-</option>
-
-<option>
-Python dastur
-</option>
-
-<option>
-Custom Tool
-</option>
-
-<option>
-Boshqa loyiha
-</option>
-
-</select>
-
-</div>
-
-
-
-<div class="group">
-
-<label>
-Loyiha haqida
-</label>
-
-<textarea
-id="message"
-placeholder="Qanday loyiha kerakligini batafsil yozing..."
-required></textarea>
-
-</div>
-
-
-
-<button
-type="submit"
-class="btn primary order-button">
-
-🚀 Buyurtmani yuborish
-
-</button>
-
-
-</form>
-
-</div>
+    </div>
 
 </section>
 
 
+<!-- =========================
+     ADMIN
+========================= -->
 
-<!-- ================================
-     CONTACT
-================================ -->
+<section id="admin" class="admin reveal">
 
-<section class="contact">
+    <div class="section-label">
+        ADMIN
+    </div>
 
+    <h2 class="section-title">
+        Admin Panel
+    </h2>
 
-<div class="title">
+    <div class="admin-box">
 
-<small>
-Aloqa
-</small>
+        <div class="admin-stat">
 
-<h2>
-Loyihangiz bormi?
-</h2>
+            <span>
+                Sayt holati
+            </span>
 
-<p>
-G‘oyangizni bizga ayting.
-</p>
+            <strong class="green">
+                ONLINE
+            </strong>
 
+        </div>
 
-<a
-href="https://t.me/C4ph4er"
-target="_blank"
-class="btn primary">
+        <div class="admin-stat">
 
-💬 Telegram orqali yozish
+            <span>
+                Platforma
+            </span>
 
-</a>
+            <strong>
+                GitHub Pages
+            </strong>
 
-</div>
+        </div>
+
+        <div class="admin-stat">
+
+            <span>
+                Buyurtmalar
+            </span>
+
+            <strong id="orderCount">
+                0
+            </strong>
+
+        </div>
+
+        <br>
+
+        <button
+            class="btn"
+            onclick="clearOrders()">
+
+            🗑 Buyurtmalar sonini tozalash
+
+        </button>
+
+    </div>
 
 </section>
 
+</main>
 
 
-<!-- ================================
+<!-- =========================
      FOOTER
-================================ -->
+========================= -->
 
 <footer>
 
-© 2026
+    © 2026 CiphierCoderUz
 
-<strong>
-CiphierCoderUz
-</strong>
+    <br><br>
 
-— Developer & Coder
+    Built with code & creativity ⚡
 
 </footer>
 
 
-
-<!-- ================================
-     TELEGRAM
-================================ -->
-
 <script>
 
-const TELEGRAM_USERNAME = "C4ph4er";
+/* =========================
+   MENU
+========================= */
+
+function openMenu(){
+
+    document
+        .getElementById("sideMenu")
+        .classList
+        .add("active");
+
+    document
+        .getElementById("overlay")
+        .classList
+        .add("active");
+
+}
+
+function closeMenu(){
+
+    document
+        .getElementById("sideMenu")
+        .classList
+        .remove("active");
+
+    document
+        .getElementById("overlay")
+        .classList
+        .remove("active");
+
+}
 
 
-document
-.getElementById("orderForm")
-.addEventListener(
-"submit",
-function(event){
+/* =========================
+   TELEGRAM ORDER
+========================= */
 
-    event.preventDefault();
-
+function sendOrder(){
 
     const name =
         document
@@ -1776,59 +1577,158 @@ function(event){
         .value
         .trim();
 
-
-    const telegram =
+    const contact =
         document
-        .getElementById("telegram")
+        .getElementById("contact")
         .value
         .trim();
-
 
     const type =
         document
         .getElementById("type")
         .value;
 
-
-    const message =
+    const budget =
         document
-        .getElementById("message")
+        .getElementById("budget")
+        .value
+        .trim();
+
+    const description =
+        document
+        .getElementById("description")
         .value
         .trim();
 
 
-    const text =
-`🚀 YANGI LOYIHA BUYURTMASI
+    if(!name || !description){
+
+        alert(
+            "Iltimos, ismingiz va loyiha haqida yozing."
+        );
+
+        return;
+    }
+
+
+    /* local order counter */
+
+    let count =
+        Number(
+            localStorage.getItem(
+                "ciphier_orders"
+            ) || 0
+        );
+
+    count++;
+
+    localStorage.setItem(
+        "ciphier_orders",
+        count
+    );
+
+
+    const message =
+`🚀 YANGI BUYURTMA
 
 👤 Ism: ${name}
 
-📱 Telegram: ${telegram}
+📱 Aloqa: ${contact || "Ko'rsatilmagan"}
 
-🛠 Loyiha turi: ${type}
+💻 Loyiha:
+${type}
 
-📝 Loyiha haqida:
-${message}
+💰 Budjet:
+${budget || "Kelishiladi"}
 
-🌐 CiphierCoderUz`;
+📝 Batafsil:
+${description}`;
 
 
-
-    const url =
-        "https://t.me/" +
-        TELEGRAM_USERNAME +
-        "?text=" +
-        encodeURIComponent(text);
+    const telegramURL =
+        "https://t.me/C4ph4er?text=" +
+        encodeURIComponent(message);
 
 
     window.open(
-        url,
+        telegramURL,
         "_blank"
     );
 
-});
+}
+
+
+/* =========================
+   ADMIN COUNTER
+========================= */
+
+function updateOrders(){
+
+    const count =
+        localStorage.getItem(
+            "ciphier_orders"
+        ) || 0;
+
+    document
+        .getElementById("orderCount")
+        .textContent = count;
+
+}
+
+function clearOrders(){
+
+    localStorage.removeItem(
+        "ciphier_orders"
+    );
+
+    updateOrders();
+
+    alert(
+        "Buyurtmalar hisoblagichi tozalandi."
+    );
+
+}
+
+updateOrders();
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(entry.isIntersecting){
+
+                        entry.target
+                            .classList
+                            .add("show");
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element =>
+            observer.observe(element)
+    );
 
 </script>
 
-
 </body>
-    </html>
+               </html>
